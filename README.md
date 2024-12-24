@@ -45,7 +45,7 @@ To run the tests in this project, follow these steps:
 This project includes both manual and automated test cases:
 
 - **Manual Test Cases**: Documented in a [Google Sheets file](https://docs.google.com/spreadsheets/d/1fmJJvCBhL_fqHFb_lG7ZWX6GXy_0ksuKV4jn6uNvjjA/edit?gid=0#gid=0) to plan and track test coverage before automation.
-- **Automated Test Cases**: The scripts for automated tests are stored in the `tests/` directory.
+- **Automated Test Cases**: The scripts for automated tests are stored in the `src/tests/` directory.
 
 ## Related Projects 🔗
 This repository is part of a collection of projects designed to showcase my QA engineering skills such as:

@@ -18,6 +18,7 @@ public class yourcartPage {
     By cartItem = By.xpath("//div[@class='cart_item']");
     By checkoutButton = By.id("checkout");
     By errorMessage =  By.xpath(("//div[@class='error-message-container error']"));
+    By continueShoppingButton = By.id("continue-shopping");
 
     public yourcartPage(WebDriver driver){
         this.driver = driver;
@@ -56,5 +57,8 @@ public class yourcartPage {
         driver.findElement(errorMessage).isDisplayed();
     }
 
+    public void clickContinueShopping(){
+        driver.findElement(continueShoppingButton).click();
+    }
 
 }

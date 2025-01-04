@@ -3,10 +3,12 @@ package pages;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class productPage {
 
@@ -17,6 +19,8 @@ public class productPage {
     By item1Price =  By.xpath("//div[@data-test='inventory-item-price']");
     By addToCartButton = By.id("add-to-cart");
     By backToProduct = By.id("back-to-products");
+    By removeButton = By.id("remove");
+    By cartBadge = By.xpath("//span[@class='shopping_cart_badge']");
 
     public productPage(WebDriver driver){
         this.driver = driver;
@@ -41,5 +45,32 @@ public class productPage {
         driver.findElement(item1Price).isDisplayed();
         driver.findElement(addToCartButton).isDisplayed();
     }
+
+    public void clickAddToCart(){
+        driver.findElement(addToCartButton).click();
+    }
+
+    public void clickRemoveButton(){
+        driver.findElement(removeButton).click();
+    }
+
+    public void validateRemoveButtonDisplayed(){
+        driver.findElement(removeButton).isDisplayed();
+    }
+
+    public void validateCartBadgeDisplayed(){
+        driver.findElement(cartBadge).isDisplayed();
+    }
+
+    public boolean validateCartBadgeHidden(){
+        List<WebElement> badges;
+        badges = driver.findElements(cartBadge);
+        return badges.isEmpty();
+    }
+
+    public void validateAddToCartButton(){
+        driver.findElement(addToCartButton).isDisplayed();
+    }
+
 
 }

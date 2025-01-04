@@ -1,8 +1,6 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -23,6 +21,16 @@ public class dashboardPage {
     //By dropdownOptions = By.tagName("option");
     //By optionLocator = By.xpath("//option[@value='\" + value + \"']");
 
+    By sidebarMenu = By.xpath("//*[@id='react-burger-menu-btn']");
+    By sidebarAllItems = By.xpath("//*[@id='inventory_sidebar_link']");
+    By sidebarAbout = By.xpath("//*[@id='about_sidebar_link']");
+    By sidebarLogout = By.xpath("//*[@id='logout_sidebar_link']");
+    By sidebarResetAppState = By.xpath("//*[@id='reset_sidebar_link']");
+
+    By footer = By.xpath("//*[@data-test='footer']");
+    By twitterLink = By.xpath("//*[@data-test='social-twitter']");
+    By facebookLink = By.xpath("//*[@data-test='social-facebook']");
+    By linkedinLink = By.xpath("//*[@data-test='social-linkedin']");
 
 //    By valueAZ = By.xpath("//option[@value='az']");
 //    By valueZA = By.xpath("//option[@value='za']");
@@ -33,6 +41,7 @@ public class dashboardPage {
     public dashboardPage(WebDriver driver){
         this.driver = driver;
     }
+
     public void isDisplayed() {
         Duration duration = Duration.ofSeconds(20);
         WebDriverWait wait = new WebDriverWait(driver, duration);
@@ -90,9 +99,147 @@ public class dashboardPage {
         driver.findElement(cartButton).click();
     }
 
+    public void clickSideBarMenu(){
+        driver.findElement(sidebarMenu).click();
+    }
+
+    public void clickLogout(){
+        driver.findElement(sidebarLogout).click();
+    }
+
+    //---------------------------sidebar menus------------------------
+    public void clickSidebarMenu(){
+        driver.findElement(sidebarMenu).click();
+    }
+
+    public void validateSidebarMenu(){
+        Duration duration = Duration.ofSeconds(20);
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+        wait.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(sidebarMenu)
+        );
+    }
+
+    public void clickAllItems(){
+        driver.findElement(sidebarAllItems).click();
+    }
+
+    public void validateAllItems(){
+        Duration duration = Duration.ofSeconds(20);
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+        wait.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(item1Title)
+        );
+    }
+
+    public void clickSidebarAbout(){
+        driver.findElement(sidebarAbout).click();
+    }
+
+    public void validateSidebarAbout(){
+        Duration duration = Duration.ofSeconds(10);
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+        wait.until(
+                ExpectedConditions.urlToBe("https://saucelabs.com/")
+        );
+    }
+
     public void cartBadgeEnabled(){
         driver.findElement(cartBadge).isEnabled();
     }
+
+    public void clickResetAppState(){
+        driver.findElement(sidebarResetAppState).click();
+    }
+
+    public void cartBadgeDisabled(){
+        boolean isDisabled = !driver.findElement(cartBadge).isEnabled();
+        System.out.println("Is " + isDisabled);
+    }
+
+    public void removeButtonDisabled(){
+        boolean isDisabled = !driver.findElement(item1RemoveButton).isEnabled();
+        System.out.println("Is " + isDisabled);
+    }
+
+    //-----------------------End sidebar menus-------------------------------
+
+
+    //-------------------------footer---------------------------------------
+//
+//    public void clickTwitter(){
+//        driver.findElement(twitterLink).click();
+//    }
+//
+//    public void clickFacebook(){
+//        driver.findElement(facebookLink).click();
+//    }
+//
+//    public void clickLinkedin(){
+//        driver.findElement(linkedinLink).click();
+//    }
+//
+//    public void validateTwitterPage(){
+//        Duration duration = Duration.ofSeconds(10);
+//        WebDriverWait wait = new WebDriverWait(driver, duration);
+//        wait.until(
+//                ExpectedConditions.urlToBe("https://x.com/saucelabs")
+//        );
+//    }
+//
+//    public void validateFacebookPage(){
+//        Duration duration = Duration.ofSeconds(10);
+//        WebDriverWait wait = new WebDriverWait(driver, duration);
+//        wait.until(
+//                ExpectedConditions.urlToBe("https://www.facebook.com/saucelabs")
+//        );
+//    }
+//
+//    public void validateLinkedinPage(){
+//        Duration duration = Duration.ofSeconds(10);
+//        WebDriverWait wait = new WebDriverWait(driver, duration);
+//        wait.until(
+//                ExpectedConditions.urlToBe("https://www.linkedin.com/company/sauce-labs/")
+//        );
+//    }
+
+    //masih failed di step terakhir
+    public void clickFooterLink(String linkName) {
+        switch (linkName.toLowerCase()){
+            case "twitter":
+                driver.findElement(twitterLink).click();
+                break;
+            case "facebook":
+                driver.findElement(facebookLink).click();
+                break;
+            case "linkedin":
+                driver.findElement(linkedinLink).click();
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid link name: "+linkName);
+        }
+        System.out.println("Clicked on " + linkName + " link");
+    }
+
+    public void validateRedirectURL(String expectedURL){
+        Duration duration = Duration.ofSeconds(30);
+        WebDriverWait wait = new WebDriverWait(driver, duration);
+
+        //switch to new tab
+        for (String windowHandle : driver.getWindowHandles()){
+            driver.switchTo().window(windowHandle);
+        }
+
+        //validate url in new tab
+        wait.until(ExpectedConditions.urlContains(expectedURL));
+        System.out.println("Current URL: " + driver.getCurrentUrl());
+
+    }
+
+
+    //----------------------------End footer---------------------------------------
+
+    //-----------------------scroll page--------------------------------
 
 //    public boolean cartBadgeDisabled(){
 //        return !driver.findElement(cartBadge).isEnabled();

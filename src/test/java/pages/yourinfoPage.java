@@ -15,7 +15,8 @@ public class yourinfoPage {
     By lastNameTextbox = By.id("last-name");
     By postalCodeTextbox = By.id("postal-code");
     By continueButton = By.id("continue");
-    By errorMessage =  By.xpath(("//div[@class='error-message-container error']"));
+    By errorMessage =  By.xpath("//div[contains(@class, 'error-message-container')]");
+    By cancelButton = By.id("cancel");
 
     public yourinfoPage(WebDriver driver) {
         this.driver = driver;
@@ -59,7 +60,28 @@ public class yourinfoPage {
         driver.findElement(continueButton).click();
     }
 
+    //coba baru
+    public void enterFirstName(String firstName){
+        driver.findElement(firstNameTextbox).sendKeys(firstName);
+    }
 
+    public void enterLastName(String lastName){
+        driver.findElement(lastNameTextbox).sendKeys(lastName);
+    }
+
+    public void enterZipCode(String zipCode){
+        driver.findElement(postalCodeTextbox).sendKeys(zipCode);
+    }
+
+    public String getErrorMessage(){
+        return driver.findElement(errorMessage).getText();
+    }
+
+    //-----------------\\
+
+    public void clickCancel(){
+        driver.findElement(cancelButton).click();
+    }
 
 }
 

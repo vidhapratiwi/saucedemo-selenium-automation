@@ -33,7 +33,6 @@ public class stepSuccessfulPurchase extends env_target {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
-        //set url
         driver.get(baseUrl);
         loginpage = new loginPage(driver);
         loginpage.isDisplayed();
@@ -41,6 +40,7 @@ public class stepSuccessfulPurchase extends env_target {
 
         dashboardpage = new dashboardPage(driver);
         dashboardpage.isDisplayed();
+        //set url
         dashboardpage.clickItem1AddButton();
         dashboardpage.clickCartButton();
 

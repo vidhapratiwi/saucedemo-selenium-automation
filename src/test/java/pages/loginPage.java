@@ -18,6 +18,7 @@ public class loginPage {
     By loginButton = By.xpath("//*[@id='login-button']");
     By errorMessage = By.xpath(("//div[@class='error-message-container error']"));
 
+
     public loginPage(WebDriver driver) { this.driver = driver; }
     public void isDisplayed() {
         Duration duration = Duration.ofSeconds(10);
@@ -48,6 +49,9 @@ public class loginPage {
         driver.findElement(passwordTextBox).sendKeys("secret_sauce");
         driver.findElement(loginButton).click();
     }
+
+
+
 
 }
 

@@ -14,6 +14,7 @@ public class overviewPage {
     By overviewTitle = By.xpath("//*[@data-test='title' and text()='Checkout: Overview']");
     By overviewItem = By.xpath("//*[@data-test='inventory-item']");
     By finishButton = By.id("finish");
+    By cancelButton = By.id("cancel");
 
     public overviewPage(WebDriver driver){
         this.driver = driver;
@@ -35,6 +36,14 @@ public class overviewPage {
 
     public void clickFinishButton(){
         driver.findElement(finishButton).click();
+    }
+
+    public void validateCancelButton(){
+        driver.findElement(cancelButton).isDisplayed();
+    }
+
+    public void clickCancelButton(){
+        driver.findElement(cancelButton).click();
     }
 
 

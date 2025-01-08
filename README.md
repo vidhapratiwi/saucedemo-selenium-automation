@@ -1,5 +1,5 @@
-# SauceDemo Playwright Automation 🛒
-Automated test cases for SauceDemo, a demo e-commerce website. This website is designed for testing different features, like browsing products, managing the cart, and finishing the checkout process. This repository shows how I use the Playwright framework for end-to-end testing.
+# SauceDemo Selenium Automation 🛒
+Automated test cases for SauceDemo, a demo e-commerce website. This website is designed for testing different features, like browsing products, managing the cart, and finishing the checkout process. This repository shows how I use the Selenium framework for end-to-end testing.
 
 ## Features Tested ✅
 - User login functionality
@@ -52,6 +52,7 @@ This repository is part of a collection of projects designed to showcase my QA e
 
 - [SauceDemo Playwright Automation](https://github.com/vidhapratiwi/saucedemo-playwright-automation.git): Automated tests for SauceDemo using the Playwright framework.
 - [CURA Healthcare Playwright Automation](https://github.com/vidhapratiwi/cura-playwright-automation.git): Automated tests for CURA Healthcare, focusing on appointment booking functionality.
+- [CURA Healthcare Selenium Automation](https://github.com/vidhapratiwi/cura-selenium-automation.git): Automated tests for CURA Healthcare, focusing on appointment booking functionality.
 
 For more related projects, visit my [QA Portfolio repository](https://github.com/vidhapratiwi/QA-Portfolio.git) 🗃
 
